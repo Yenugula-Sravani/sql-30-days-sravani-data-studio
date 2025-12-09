@@ -1,0 +1,12 @@
+1. Find employees who joined in the last 6 months. 
+  SELECT * 
+  FROM employees 
+  WHERE join_date >= CURRENT_DATE - 
+  INTERVAL '6 months'; 
+2. Find the second highest salary from the Employee table. 
+  SELECT MAX(salary) AS SecondHighestSalary 
+  FROM employees 
+  WHERE salary < ( 
+      SELECT MAX(salary) 
+      FROM employees 
+  ); 
