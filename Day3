@@ -1,0 +1,12 @@
+1. Get departments with no employees. 
+  SELECT d.department_name 
+  FROM departments d 
+  LEFT JOIN employees e ON d.department_id = 
+  e.department_id 
+  WHERE e.id IS NULL;
+
+2. Find duplicate records in a table. 
+SELECT name, COUNT(*) 
+FROM employees 
+GROUP BY name 
+HAVING COUNT(*) > 1; 
