@@ -1,0 +1,16 @@
+1.Running total of salaries by department. 
+  SELECT name, department_id, salary, 
+         SUM(salary) OVER (PARTITION BY 
+  department_id ORDER BY id) AS running_total 
+  FROM employees; 
+2. Write a query to find the median salary. 
+  SELECT AVG(salary) AS median_salary 
+  FROM ( 
+    SELECT salary 
+    FROM employees 
+    ORDER BY salary 
+    LIMIT 2 - (SELECT COUNT(*) FROM employees) 
+  % 2 
+    OFFSET (SELECT (COUNT(*) - 1) / 2 FROM 
+  employees) 
+  ) AS median_subquery; 
